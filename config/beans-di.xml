@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi ="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation ="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd" >
+    <bean id="s1" class="com.jeff.spring.di.Student">
+        <property name="id" value="1001"/>
+        <property name="name" value="jeff23"/>
+        <property name="age" value="23"/>
+        <property name="sex" value="male"/>
+    </bean>
+
+    <bean id="s2" class="com.jeff.spring.di.Student">
+        <constructor-arg value="1002"/>
+        <constructor-arg value="jeff24"/>
+        <constructor-arg value="24" index="2" type="java.lang.Integer"/>
+        <constructor-arg value="male"/>
+    </bean>
+
+    <bean id="s3" class="com.jeff.spring.di.Student">
+        <constructor-arg value="1003"/>
+        <constructor-arg value="jeff25"/>
+        <constructor-arg value="90" index="2" type="java.lang.Double"/>
+        <constructor-arg value="male"/>
+    </bean>
+
+</beans>
