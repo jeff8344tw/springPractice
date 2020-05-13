@@ -6,6 +6,27 @@ public class Student {
     private Integer age;
     private String sex;
     private Double score;
+    private Teacher teacher;
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", sex='" + sex + '\'' +
+                ", score=" + score +
+                ", teacher=" + teacher +
+                '}';
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
 
     public Double getScore() {
         return score;
@@ -45,17 +66,6 @@ public class Student {
 
     public void setSex(String sex) {
         this.sex = sex;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", sex='" + sex + '\'' +
-                ", score=" + score +
-                '}';
     }
 
     public Student() {
