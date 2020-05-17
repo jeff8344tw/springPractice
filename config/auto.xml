@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi ="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation ="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/util
+                       http://www.springframework.org/schema/util/spring-util.xsd" >
+
+    <!--
+        autowire:根據抹種策略自動為非字面輛屬性賦值
+        autowire="byName:byType"
+        byName:通過屬姓名和spring容器中bean的id進行比較，若一致可直接賦值
+        byType:通過spring容器中bean的類型，為兼容性的屬性賦值
+        選用建議: 問題1:當設置autowire屬性，會作用於該bean中所有的非字面量屬性，因此誰都不用
+    -->
+    
+    <bean id="emp" class="com.jeff.ioc.auto.Emp" autowire="byType">
+        <property name="eId" value="1001" />
+        <property name="eName" value="jeff" />
+<!--        <property name="car" ref="car"/>-->
+<!--        <property name="dept" ref="dept" />-->
+    </bean>
+
+    <bean id="car1" class="com.jeff.ioc.auto.Car">
+        <property name="cId" value="6666" />
+        <property name="cName" value="BNZ" />
+    </bean>
+
+    <bean id="dept1" class="com.jeff.ioc.auto.Dept">
+        <property name="dId" value="77777" />
+        <property name="dName" value="google" />
+    </bean>
+
+</beans>
