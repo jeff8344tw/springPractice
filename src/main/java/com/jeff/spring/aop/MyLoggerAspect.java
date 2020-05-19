@@ -3,15 +3,17 @@ package com.jeff.spring.aop;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
 @Component
 @Aspect
+@Order(1) // 定義切面作用的優先級，值越小優先級越高,默認值為int的最大值
 public class MyLoggerAspect {
 
-    // 定義切入點表達式
+    // 重用切入點定義
     @Pointcut(value="execution(* com.jeff.spring.aop.*.*(..))")
     public void test() {
 
