@@ -1,7 +1,7 @@
-package com.jeff.book.controller;
+package com.jeff.book_xml.controller;
 
-import com.jeff.book.service.BookService;
-import com.jeff.book.service.Cashier;
+import com.jeff.book_xml.service.BookService;
+import com.jeff.book_xml.service.Cashier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 

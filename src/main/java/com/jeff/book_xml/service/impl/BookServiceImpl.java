@@ -1,15 +1,14 @@
-package com.jeff.book.service.impl;
+package com.jeff.book_xml.service.impl;
 
-import com.jeff.book.dao.BookDao;
-import com.jeff.book.exception.MyException;
-import com.jeff.book.service.BookService;
+import com.jeff.book_xml.dao.BookDao;
+import com.jeff.book_xml.exception.MyException;
+import com.jeff.book_xml.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
 public class BookServiceImpl implements BookService {
 
     @Autowired

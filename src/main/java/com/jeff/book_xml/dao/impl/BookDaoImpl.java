@@ -1,7 +1,7 @@
-package com.jeff.book.dao.impl;
+package com.jeff.book_xml.dao.impl;
 
-import com.jeff.book.dao.BookDao;
-import com.jeff.book.exception.MyException;
+import com.jeff.book_xml.dao.BookDao;
+import com.jeff.book_xml.exception.MyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;

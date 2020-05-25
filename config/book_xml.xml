@@ -3,14 +3,17 @@
        xmlns:xsi ="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation ="http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans.xsd
                         http://www.springframework.org/schema/context
                         http://www.springframework.org/schema/context/spring-context.xsd
                         http://www.springframework.org/schema/tx
-                        http://www.springframework.org/schema/tx/spring-tx-3.1.xsd" >
+                        http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+                        http://www.springframework.org/schema/aop
+                        http://www.springframework.org/schema/aop/spring-aop.xsd" >
 
-    <context:component-scan base-package="com.jeff.book" />
+    <context:component-scan base-package="com.jeff.book_xml" />
 
     <context:property-placeholder location="db.properties" />
 
@@ -25,13 +28,24 @@
         <property name="dataSource" ref="dataSource"></property>
     </bean>
 
-    <!-- 配置事務管理器-->
+    <!-- 配置事務管理器，不管是用註解方式或xml方式配置事務，一定要有DataSourceTransactionManager事務管理器的支持-->
     <bean id="dataSourceTransactoinManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" />
     </bean>
 
-    <!-- 開啟註解驅動，即對事務相關的註解進行掃描，解析涵義並執行功能-->
-    <tx:annotation-driven transaction-manager="dataSourceTransactoinManager" />
-
+    <!--配置事務通知-->
+    <tx:advice id="tx" transaction-manager="dataSourceTransactoinManager">
+        <tx:attributes>
+            <!--在配置好的切入點表達式下再次進行事務設置值-->
+            <tx:method name="buyBook" />
+            <tx:method name="checkOut" />
+        </tx:attributes>
+    </tx:advice>
+    
+    <!--配置切入點表達式-->
+    <aop:config>
+        <aop:pointcut expression="execution(* com.jeff.book_xml.service.impl.*.*(..))" id = "pointCut" />
+        <aop:advisor advice-ref="tx" pointcut-ref="pointCut"/>
+    </aop:config>
 
 </beans>
